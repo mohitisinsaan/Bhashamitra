@@ -2,16 +2,22 @@
 import Header from '../components/Header'
 import {useRouter} from 'next/router'
 import languages from '../data/languages.json'
-import {ensureProfile, saveProfile} from '../utils/localAuth'
+import {ensureProfile, saveProfile, loadProfile} from '../utils/localAuth'
 import {useState,useEffect} from 'react'
 
 export default function Select(){
   const router = useRouter()
-  const [profile,setProfile] = useState(ensureProfile())
+  const [profile,setProfile] = useState(null)
+
+  useEffect(()=>{
+    const p = loadProfile() || ensureProfile();
+    setProfile(p)
+  },[])
 
   const start = (langId) => {
-    const p = {...profile, selectedLang: langId}
+    const p = {...(profile||ensureProfile()), selectedLang: langId}
     saveProfile(p)
+    setProfile(p)
     router.push('/lessons?lang='+langId)
   }
 

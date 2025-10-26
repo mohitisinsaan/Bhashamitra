@@ -3,13 +3,15 @@ import Header from '../components/Header'
 import {useRouter} from 'next/router'
 import lessonsData from '../data/lessons.json'
 import {useEffect,useState} from 'react'
-import {addXp, addStreak, awardBadge, ensureProfile} from '../utils/localAuth'
+import {addXp, addStreak, awardBadge, loadProfile, ensureProfile} from '../utils/localAuth'
 export default function Lesson(){
   const router = useRouter()
   const {id, lang} = router.query
   const [idx,setIdx] = useState(0)
   const [showAns,setShowAns] = useState(false)
   const [lesson,setLesson] = useState(null)
+  const [profile, setProfile] = useState(null)
+
   useEffect(()=>{
     if(id && lang){
       const all = lessonsData[lang] || []
@@ -18,6 +20,11 @@ export default function Lesson(){
     }
   },[id,lang])
 
+  useEffect(()=>{
+    const p = loadProfile() || ensureProfile();
+    setProfile(p)
+  },[])
+
   if(!lesson) return (<div><Header /><main className='container'><div className='card'>Loading...</div></main></div>)
 
   const card = lesson.cards[idx]
@@ -25,10 +32,11 @@ export default function Lesson(){
   const markCorrect = ()=>{
     addXp(10)
     addStreak()
-    if((ensureProfile().xp || 0) + 10 >= 100) awardBadge('Learner I')
-    // move next
+    const updated = loadProfile() || ensureProfile();
+    if((updated.xp || 0) >= 100) awardBadge('Learner I')
     setShowAns(false)
     setIdx(Math.min(idx+1, lesson.cards.length-1))
+    setProfile(updated)
   }
 
   return (

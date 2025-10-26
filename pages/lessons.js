@@ -4,12 +4,22 @@ import {useRouter} from 'next/router'
 import lessonsData from '../data/lessons.json'
 import languages from '../data/languages.json'
 import Link from 'next/link'
-import {ensureProfile, saveProfile} from '../utils/localAuth'
+import {useEffect,useState} from 'react'
+import {loadProfile, ensureProfile} from '../utils/localAuth'
 
 export default function Lessons(){
   const router = useRouter()
-  const lang = router.query.lang || (ensureProfile().selectedLang)
-  const lessons = lessonsData[lang] || []
+  const [profile,setProfile] = useState(null)
+  const [lang, setLang] = useState(null)
+
+  useEffect(()=>{
+    const p = loadProfile() || ensureProfile();
+    setProfile(p);
+    const q = router.query.lang || (p && p.selectedLang) || null;
+    setLang(q);
+  },[router.query.lang])
+
+  const lessons = (lang && lessonsData[lang]) ? lessonsData[lang] : [] 
   const langInfo = languages.find(l=>l.id===lang) || {name:'Unknown'}
 
   return (

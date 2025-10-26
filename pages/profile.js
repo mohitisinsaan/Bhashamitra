@@ -1,8 +1,13 @@
 
 import Header from '../components/Header'
-import {loadProfile,ensureProfile} from '../utils/localAuth'
+import {loadProfile, ensureProfile} from '../utils/localAuth'
+import {useEffect,useState} from 'react'
 export default function Profile(){
-  const p = ensureProfile()
+  const [p, setP] = useState(null)
+  useEffect(()=>{
+    setP(loadProfile() || ensureProfile())
+  },[])
+  if(!p) return (<div><Header /><main className='container'><div className='card'>Loading...</div></main></div>)
   return (
     <div>
       <Header />
