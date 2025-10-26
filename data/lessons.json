@@ -1,0 +1,72 @@
+{
+  "hi": [
+    {
+      "id": "hi-1",
+      "title": "Basics: Greetings",
+      "cards": [
+        {
+          "q": "Hello",
+          "a": "\u0928\u092e\u0938\u094d\u0924\u0947"
+        },
+        {
+          "q": "Thank you",
+          "a": "\u0927\u0928\u094d\u092f\u0935\u093e\u0926"
+        },
+        {
+          "q": "How are you?",
+          "a": "\u0915\u0948\u0938\u0947 \u0939\u0948\u0902?"
+        }
+      ]
+    },
+    {
+      "id": "hi-2",
+      "title": "Numbers 1-5",
+      "cards": [
+        {
+          "q": "One",
+          "a": "\u090f\u0915"
+        },
+        {
+          "q": "Two",
+          "a": "\u0926\u094b"
+        },
+        {
+          "q": "Three",
+          "a": "\u0924\u0940\u0928"
+        }
+      ]
+    }
+  ],
+  "bn": [
+    {
+      "id": "bn-1",
+      "title": "Basics: Greetings",
+      "cards": [
+        {
+          "q": "Hello",
+          "a": "\u09b9\u09cd\u09af\u09be\u09b2\u09cb"
+        },
+        {
+          "q": "Thank you",
+          "a": "\u09a7\u09a8\u09cd\u09af\u09ac\u09be\u09a6"
+        }
+      ]
+    }
+  ],
+  "ta": [
+    {
+      "id": "ta-1",
+      "title": "Basics: Greetings",
+      "cards": [
+        {
+          "q": "Hello",
+          "a": "\u0bb5\u0ba3\u0b95\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        {
+          "q": "Thank you",
+          "a": "\u0ba8\u0ba9\u0bcd\u0bb1\u0bbf"
+        }
+      ]
+    }
+  ]
+}

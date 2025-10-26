@@ -1,0 +1,23 @@
+[
+  {
+    "id": "hi",
+    "name": "Hindi",
+    "native": "\u0939\u093f\u0928\u094d\u0926\u0940",
+    "color": "#ff9933",
+    "desc": "Learn everyday Hindi greetings, numbers and phrases."
+  },
+  {
+    "id": "bn",
+    "name": "Bengali",
+    "native": "\u09ac\u09be\u0982\u09b2\u09be",
+    "color": "#0b6b3a",
+    "desc": "Basics of Bengali \u2014 greetings and common words."
+  },
+  {
+    "id": "ta",
+    "name": "Tamil",
+    "native": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd",
+    "color": "#7a5c3b",
+    "desc": "Intro to Tamil \u2014 simple phrases and numbers."
+  }
+]
